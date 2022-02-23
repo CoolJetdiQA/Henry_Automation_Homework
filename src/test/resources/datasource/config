@@ -1,0 +1,14 @@
+url=http://practice.automationtesting.in/test-cases/
+
+#Home Page
+shop=menu-item-40
+home=//a[text()='Home']
+books=//div[@id='text-22-sub_row_1-0-2-0-0']/parent::div/parent::div/descendant::ul
+stock=//p[contains(@class, 'stock')]
+qty=//input[@type ='number']
+addBtn=//button[@type='submit']
+sliders=//div[@id='n2-ss-6']/descendant::div[@class='n2-ss-slider-3']//img
+descriptionTab=//ul[@class='tabs wc-tabs']/li/a[text()='Description']
+descriptionTitle=//div[@class='woocommerce-tabs wc-tabs-wrapper']//h2[text()='Product Description']
+reviewTab=//ul[@class='tabs wc-tabs']/li/a[contains(text(), 'Reviews')]
+reviewTitle=//div[@class='woocommerce-tabs wc-tabs-wrapper']//h2[text()='Reviews']
