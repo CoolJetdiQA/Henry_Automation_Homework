@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class Utility {
 	private static Properties configFile;
-	private static String filePath = "src/test/resources/datasource/config";
+	private static String filePath = "src/test/resources/datasource/config.properties";
 
 	static {
 		try(FileInputStream input = new FileInputStream(filePath)) {		
