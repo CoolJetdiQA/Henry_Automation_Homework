@@ -7,6 +7,7 @@ public class Utility {
 	private static Properties configFile;
 	private static String filePath = "src/test/resources/datasource/config.properties";
 
+
 	static {
 		try(FileInputStream input = new FileInputStream(filePath)) {		
 			configFile = new Properties();
