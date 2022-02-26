@@ -1,14 +1,10 @@
 package Utilities;
 
-import javax.swing.text.Utilities;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
-import okhttp3.internal.Util;
 
 public class Driver {
 	public static WebDriver driver;
