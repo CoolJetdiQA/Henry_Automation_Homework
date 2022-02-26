@@ -32,6 +32,7 @@ public class Driver {
 			}
 		}
 		driver.get(Utility.getProperties("url"));
+		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		
 		return driver; 
