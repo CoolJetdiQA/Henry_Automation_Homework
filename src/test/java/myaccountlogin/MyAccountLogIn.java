@@ -10,7 +10,7 @@
   
  */
 
-package homepage;
+package myaccountlogin;
 
 import java.util.concurrent.TimeUnit;
 import org.junit.Assert;
@@ -228,7 +228,7 @@ public class MyAccountLogIn {
 		// Navigate back to the page.
 		driver.navigate().back();
 		
-		// User shouldn¡¯t be signed in to his account rather a general webpage must be visible
+		// User shouldn¡¯t be signed in to his account rather a general web page must be visible.
 		String expectedTitle = "My Account ¨C Automation Practice Site"; 
 		String actualTitle = driver.getTitle();
 		Assert.assertEquals(actualTitle, expectedTitle);
