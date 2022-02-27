@@ -43,7 +43,7 @@ public class MyAccountLogIn {
 		driver.findElement(By.xpath(Utility.getProperties("MyAccountBtn"))).click();
 
 		// Enter User email address.
-		driver.findElement(By.id(Utility.getProperties("usernameLogIn"))).sendKeys(Utility.getProperties("email"));
+		driver.findElement(By.id(Utility.getProperties("usernameLogIn"))).sendKeys(Utility.getProperties("emailForAccountLogIn"));
 
 		// Enter User password.
 		driver.findElement(By.id(Utility.getProperties("passwordLogIn"))).sendKeys(Utility.getProperties("password"));
@@ -95,7 +95,7 @@ public class MyAccountLogIn {
 		driver.findElement(By.xpath(Utility.getProperties("MyAccountBtn"))).click();
 
 		// Enter valid user email address.
-		driver.findElement(By.id(Utility.getProperties("usernameLogIn"))).sendKeys(Utility.getProperties("email"));
+		driver.findElement(By.id(Utility.getProperties("usernameLogIn"))).sendKeys(Utility.getProperties("emailForAccountLogIn"));
 
 		// Enter empty user password.
 		driver.findElement(By.id(Utility.getProperties("passwordLogIn"))).sendKeys("");
@@ -187,7 +187,7 @@ public class MyAccountLogIn {
 
 		// Enter changed case user email address.
 		driver.findElement(By.id(Utility.getProperties("usernameLogIn")))
-		      .sendKeys(Utility.getProperties("email").toUpperCase());
+		      .sendKeys(Utility.getProperties("emailForAccountLogIn").toUpperCase());
 
 		// Enter changed case user password field.
 		driver.findElement(By.id(Utility.getProperties("passwordLogIn")))
@@ -213,7 +213,7 @@ public class MyAccountLogIn {
 
 		// Enter valid user email address.
 		driver.findElement(By.id(Utility.getProperties("usernameLogIn")))
-		      .sendKeys(Utility.getProperties("email"));
+		      .sendKeys(Utility.getProperties("emailForAccountLogIn"));
 
 		// Enter valid user password field.
 		driver.findElement(By.id(Utility.getProperties("passwordLogIn")))
