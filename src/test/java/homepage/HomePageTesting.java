@@ -1543,9 +1543,8 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	// I will open it when I finish all test cases.
-//	@After
-//	public void afterTest() {
-//		Driver.tearDown();
-//	}
+	@After
+	public void afterTest() {
+		Driver.tearDown();
+	}
 }

@@ -13,6 +13,8 @@
 package myaccountlogin;
 
 import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -234,5 +236,10 @@ public class MyAccountLogIn {
 		Assert.assertEquals(actualTitle, expectedTitle);
 
 		System.out.println("PASS!");
+	}
+	
+	@After
+	public void afterTest() {
+		Driver.tearDown();
 	}
 }
