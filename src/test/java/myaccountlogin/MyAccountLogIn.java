@@ -13,7 +13,6 @@
 package myaccountlogin;
 
 import java.util.concurrent.TimeUnit;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,13 +20,11 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import Utilities.Driver;
 import Utilities.Utility;
 
 public class MyAccountLogIn {
 	private WebDriver driver;
-	private WebDriverWait wait;
 
 	@Before
 	public void beforeTest() {
@@ -36,10 +33,8 @@ public class MyAccountLogIn {
 	}
 
 	@Test
-	public void test1() {
-		System.out.print("My Account: Log In - Test case #1 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void validUsernamePassword() {
+		System.out.print("My Account: Log In - Valid Username & Password: Test case #1 starts.....");
 
 		// Click on My Account menu.
 		driver.findElement(By.xpath(Utility.getProperties("MyAccountBtn"))).click();
@@ -62,10 +57,8 @@ public class MyAccountLogIn {
 	}
 
 	@Test
-	public void test2() {
-		System.out.print("My Account: Log In - Test case #2 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void invalidUsernamePassword() {
+		System.out.print("My Account: Log In - Invalid Username & Password: Test case #2 starts.....");
 
 		// Click on My Account menu.
 		driver.findElement(By.xpath(Utility.getProperties("MyAccountBtn"))).click();
@@ -88,10 +81,8 @@ public class MyAccountLogIn {
 	}
 
 	@Test
-	public void test3() {
-		System.out.print("My Account: Log In - Test case #3 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void validUsernameEmptyPassword() {
+		System.out.print("My Account: Log In - Valid Username & Empty Password: Test case #3 starts.....");
 
 		// Click on My Account menu.
 		driver.findElement(By.xpath(Utility.getProperties("MyAccountBtn"))).click();
@@ -112,10 +103,8 @@ public class MyAccountLogIn {
 	}
 	
 	@Test
-	public void test4() {
-		System.out.print("My Account: Log In - Test case #4 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void emptyUsernameValidPassword() {
+		System.out.print("My Account: Log In - Empty Username & Valid Password: Test case #4 starts.....");
 
 		// Click on My Account menu.
 		driver.findElement(By.xpath(Utility.getProperties("MyAccountBtn"))).click();
@@ -136,10 +125,8 @@ public class MyAccountLogIn {
 	}
 	
 	@Test
-	public void test5() {
-		System.out.print("My Account: Log In - Test case #5 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void emptyUsernamePassword() {
+		System.out.print("My Account: Log In - Empty Username & Password: Test case #5 starts.....");
 
 		// Click on My Account menu.
 		driver.findElement(By.xpath(Utility.getProperties("MyAccountBtn"))).click();
@@ -160,10 +147,8 @@ public class MyAccountLogIn {
 	}
 	
 	@Test
-	public void test6() {
-		System.out.print("My Account: Log In - Test case #6 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void passwordMasked() {
+		System.out.print("My Account: Log In - Password Should Be Masked: Test case #6 starts.....");
 
 		// Click on My Account menu.
 		driver.findElement(By.xpath(Utility.getProperties("MyAccountBtn"))).click();
@@ -179,10 +164,8 @@ public class MyAccountLogIn {
 	}
 	
 	@Test
-	public void test7() {
-		System.out.print("My Account: Log In - Test case #7 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void handleCaseSensitive() {
+		System.out.print("My Account: Log In - Handle Case Sensitive: Test case #7 starts.....");
 
 		// Click on My Account menu.
 		driver.findElement(By.xpath(Utility.getProperties("MyAccountBtn"))).click();
@@ -205,10 +188,8 @@ public class MyAccountLogIn {
 	}
 	
 	@Test
-	public void test8() {
-		System.out.print("My Account: Log In - Test case #8 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void authentication() {
+		System.out.print("My Account: Log In - Authentication: Test case #8 starts.....");
 
 		// Click on My Account menu.
 		driver.findElement(By.xpath(Utility.getProperties("MyAccountBtn"))).click();
