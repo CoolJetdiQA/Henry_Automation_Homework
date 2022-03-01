@@ -310,7 +310,7 @@ public class HomePageTesting {
 	}
 	
 	@Test
-	public void addMoreBook() {
+	public void addToBasketMoreBook() {
 		System.out.print("Home Page - Add More Book: Test case #7 starts.....");
 
 		// Click on Shop menu.
@@ -387,8 +387,8 @@ public class HomePageTesting {
 	}
 
 	@Test
-	public void test8() {
-		System.out.print("Home Page - Test case #8 starts.....");
+	public void addToBasketItem() {
+		System.out.print("Home Page -Add-To-Basket Items: Test case #8 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -465,8 +465,8 @@ public class HomePageTesting {
 
 	
 	@Test
-	public void test9() {
-		System.out.print("Home Page - Test case #9 starts.....");
+	public void addToBasketItemCoupon() {
+		System.out.print("Home Page - Add to Basket Item Coupon: Test case #9 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -562,8 +562,8 @@ public class HomePageTesting {
 
 	
 	@Test
-	public void test10() {
-		System.out.print("Home Page - Test case #10 starts.....");
+	public void addToBasketItemCouponValue() {
+		System.out.print("Home Page - Add to Basket Item Coupon Value: Test case #10 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -670,8 +670,8 @@ public class HomePageTesting {
 
 	
 	@Test
-	public void test11() {
-		System.out.print("Home Page - Test case #11 starts.....");
+	public void addToBasketItemRemoveBook() {
+		System.out.print("Home Page - Add to Basket Item Remove Book: Test case #11 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -754,8 +754,8 @@ public class HomePageTesting {
 
 	
 	@Test
-	public void test12() {
-		System.out.print("Home Page - Test case #12 starts.....");
+	public void addToBasketItemAddBook() {
+		System.out.print("Home Page - Add to Basket Item Add Book: Test case #12 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -845,8 +845,8 @@ public class HomePageTesting {
 
 	
 	@Test
-	public void test13() {
-		System.out.print("Home Page - Test case #13 starts.....");
+	public void checkoutBookFinalPrice() {
+		System.out.print("Home Page - Checkout Book Final Price: Test case #13 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -924,8 +924,8 @@ public class HomePageTesting {
 
 	
 	@Test
-	public void test14() {
-		System.out.print("Home Page - Test case #14 starts.....");
+	public void checkoutUpateBasket() {
+		System.out.print("Home Page - Checkout Update Basket: Test case #14 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -1015,8 +1015,8 @@ public class HomePageTesting {
 
 	
 	@Test
-	public void test15() {
-		System.out.print("Home Page - Test case #15 starts.....");
+	public void subTotalCondition() {
+		System.out.print("Home Page - Sub Total & Total Condition: Test case #15 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -1101,8 +1101,8 @@ public class HomePageTesting {
 	}
 
 	@Test
-	public void test16() {
-		System.out.print("Home Page - Test case #16 starts.....");
+	public void checkoutFunctionality() {
+		System.out.print("Home Page - Checkout Functionality: Test case #16 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -1194,8 +1194,8 @@ public class HomePageTesting {
 	}
 
 	@Test
-	public void test17() {
-		System.out.print("Home Page - Test case #17 starts.....");
+	public void checkoutPaymentGateway() {
+		System.out.print("Home Page - Checkout Payment Gateway: Test case #17 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -1343,8 +1343,8 @@ public class HomePageTesting {
 	}
 
 	@Test
-	public void test18() {
-		System.out.print("Home Page - Test case #18 starts.....");
+	public void placeOrder() {
+		System.out.print("Home Page - Place Order: Test case #18 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
