@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -33,17 +32,17 @@ public class HomePageTesting {
 	private WebDriver driver;
 	private WebDriverWait wait;
 
+	
 	@Before
 	public void beforeTest() {
 		driver = Driver.getDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		wait = new WebDriverWait(driver, 10);
 	}
 
 	@Test
-	public void test1() {
-		System.out.print("Home Page - Test case #1 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void threeSlider() {
+		System.out.print("Home Page - Three Sliders: Test case #1 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -68,12 +67,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	
 	@Test
-	public void test2() {
-		System.out.print("Home Page - Test case #2 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void threeArrival() {
+		System.out.print("Home Page - Three Arrivals: Test case #2 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -98,12 +94,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	
 	@Test
-	public void test3() {
-		System.out.print("Home Page - Test case #3 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void arrivalImageNavigate() {
+		System.out.print("Home Page - Arrival Image Navigate: Test case #3 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -145,13 +138,10 @@ public class HomePageTesting {
 
 		System.out.println("PASSED!");
 	}
-
 	
 	@Test
-	public void test4() {
-		System.out.print("Home Page - Test case #4 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void arrivalImageDescription() {
+		System.out.print("Home Page - Arrival Image Description: Test case #4 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -199,13 +189,10 @@ public class HomePageTesting {
 
 		System.out.println("PASSED!");
 	}
-
 	
 	@Test
-	public void test5() {
-		System.out.print("Home Page - Test case #5 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void arrivalImageReview() {
+		System.out.print("Home Page - Arrival Image Review: Test case #5 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -254,12 +241,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	
 	@Test
-	public void test6() {
-		System.out.print("Home Page - Test case #6 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void addToBasket() {
+		System.out.print("Home Page - Add to Basket: Test case #6 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -324,13 +308,10 @@ public class HomePageTesting {
 
 		System.out.println("PASSED!");
 	}
-
 	
 	@Test
-	public void test7() {
-		System.out.print("Home Page - Test case #7 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
+	public void addMoreBook() {
+		System.out.print("Home Page - Add More Book: Test case #7 starts.....");
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -405,12 +386,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	
 	@Test
 	public void test8() {
 		System.out.print("Home Page - Test case #8 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -489,8 +467,6 @@ public class HomePageTesting {
 	@Test
 	public void test9() {
 		System.out.print("Home Page - Test case #9 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -588,8 +564,6 @@ public class HomePageTesting {
 	@Test
 	public void test10() {
 		System.out.print("Home Page - Test case #10 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -699,8 +673,6 @@ public class HomePageTesting {
 	public void test11() {
 		System.out.print("Home Page - Test case #11 starts.....");
 
-		wait = new WebDriverWait(driver, 10);
-
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
 
@@ -784,8 +756,6 @@ public class HomePageTesting {
 	@Test
 	public void test12() {
 		System.out.print("Home Page - Test case #12 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -878,8 +848,6 @@ public class HomePageTesting {
 	public void test13() {
 		System.out.print("Home Page - Test case #13 starts.....");
 
-		wait = new WebDriverWait(driver, 10);
-
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
 
@@ -958,8 +926,6 @@ public class HomePageTesting {
 	@Test
 	public void test14() {
 		System.out.print("Home Page - Test case #14 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -1052,8 +1018,6 @@ public class HomePageTesting {
 	public void test15() {
 		System.out.print("Home Page - Test case #15 starts.....");
 
-		wait = new WebDriverWait(driver, 10);
-
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
 
@@ -1139,8 +1103,6 @@ public class HomePageTesting {
 	@Test
 	public void test16() {
 		System.out.print("Home Page - Test case #16 starts.....");
-
-		wait = new WebDriverWait(driver, 10);
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -1234,8 +1196,6 @@ public class HomePageTesting {
 	@Test
 	public void test17() {
 		System.out.print("Home Page - Test case #17 starts.....");
-
-		wait = new WebDriverWait(driver, 30);
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
@@ -1385,8 +1345,6 @@ public class HomePageTesting {
 	@Test
 	public void test18() {
 		System.out.print("Home Page - Test case #18 starts.....");
-
-		wait = new WebDriverWait(driver, 30);
 
 		// Click on Shop menu.
 		driver.findElement(By.id(Utility.getProperties("shop"))).click();
