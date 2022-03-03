@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -38,9 +39,25 @@ public class Shop {
 		
 		WebElement slider = driver.findElement(By.xpath(Utility.getProperties("leftSlider")));
 		
-		Actions action = new Actions(driver);
-		action.dragAndDropBy(slider, -28, 0).click().build().perform();
+		Point p = slider.getLocation();
+		System.out.println("x: " + p.getX());
+		System.out.println("y: " + p.getY());
 		
+		Actions action = new Actions(driver);
+		action.dragAndDropBy(slider, p.getX(), p.getY()).perform();
+		
+	
+		
+		
+		double maxPrice = Double.parseDouble(driver.findElement(By.xpath(Utility.getProperties("maxSliderPrice"))).getText()
+				.replaceFirst("\\S", "").replaceAll("[$,]", "").trim());
+		double minPrice = Double.parseDouble(driver.findElement(By.xpath(Utility.getProperties("minSliderPrice"))).getText()
+				.replaceFirst("\\S", "").replaceAll("[$,]", "").trim());
+		
+		System.out.println("Max price: " + maxPrice);
+		System.out.println("Min price: " + minPrice);
+
+
 		System.out.println("PASS!");
 	}
 }
