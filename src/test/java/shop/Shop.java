@@ -2,6 +2,7 @@ package shop;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -11,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import Utilities.Driver;
 import Utilities.Utility;
@@ -47,15 +49,23 @@ public class Shop {
 		action.dragAndDropBy(slider, p.getX(), p.getY()).perform();
 		
 	     
+		int minPrice = 150;  // find xpath later
+		int maxPrice = 500;  // find xpath later
+		int fromFilterPrice=400; // min filter price
+		int toFilterPrice=605;   // max filter price
 		
+		Assert.assertTrue("Min filter price must be less than or equal to max filter price.", fromFilterPrice <= toFilterPrice);
+		Assert.assertTrue("ERROR! Min filter price must be equal or greater than min price, and also smaller or equal to max value", 
+				         (fromFilterPrice >= minPrice) && (fromFilterPrice <= maxPrice));
+		Assert.assertTrue("Max filter price must be less than or equal to max price.", toFilterPrice <= maxPrice);
 		
-		double maxPrice = Double.parseDouble(driver.findElement(By.xpath(Utility.getProperties("maxSliderPrice"))).getText()
+		double maxDisplayPrice = Double.parseDouble(driver.findElement(By.xpath(Utility.getProperties("maxDisplayPrice"))).getText()
 				.replaceFirst("\\S", "").replaceAll("[$,]", "").trim());
-		double minPrice = Double.parseDouble(driver.findElement(By.xpath(Utility.getProperties("minSliderPrice"))).getText()
+		double minDisplayPrice = Double.parseDouble(driver.findElement(By.xpath(Utility.getProperties("minDisplayPrice"))).getText()
 				.replaceFirst("\\S", "").replaceAll("[$,]", "").trim());
 		
-		System.out.println("Max price: " + maxPrice);
-		System.out.println("Min price: " + minPrice);
+		System.out.println("Max display price: " + maxDisplayPrice);
+		System.out.println("Min display price: " + minDisplayPrice);
 
 		System.out.println("PASS!");
 	}
