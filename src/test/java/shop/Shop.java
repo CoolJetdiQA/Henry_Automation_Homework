@@ -46,7 +46,7 @@ public class Shop {
 		Actions action = new Actions(driver);
 		action.dragAndDropBy(slider, p.getX(), p.getY()).perform();
 		
-	
+	     
 		
 		
 		double maxPrice = Double.parseDouble(driver.findElement(By.xpath(Utility.getProperties("maxSliderPrice"))).getText()
@@ -56,7 +56,6 @@ public class Shop {
 		
 		System.out.println("Max price: " + maxPrice);
 		System.out.println("Min price: " + minPrice);
-
 
 		System.out.println("PASS!");
 	}
