@@ -1,9 +1,11 @@
 package shop;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import org.graalvm.compiler.nodes.memory.address.OffsetAddressNode;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,8 +14,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 import Utilities.Driver;
 import Utilities.Utility;
 
@@ -21,7 +21,7 @@ public class Shop {
 	private WebDriver driver;
 	private WebDriverWait wait;
 
-	@BeforeMethod
+	@Before
 	public void beforeTest() {
 		driver = Driver.getDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -29,7 +29,7 @@ public class Shop {
 	}
 
 	@Test
-	public void shopFilterPrice() {
+	public void shopFilterPrice() throws InterruptedException {
 		System.out.print("Shop - Test case #1 starts.....");
 
 		// Click on Shop menu.
@@ -49,45 +49,57 @@ public class Shop {
 				"Min filter price must be less than or equal to max filter price.");
 		Assert.assertTrue((fromFilterPrice >= minPrice) && (fromFilterPrice <= maxPrice),
 				"ERROR! Min filter price must be equal or greater than min price, and also smaller or equal to max value");
-		Assert.assertTrue(toFilterPrice <= maxPrice, "Max filter price must be less than or equal to max price.");
+		Assert.assertTrue(toFilterPrice <= maxPrice, "Max filter price must be less than or equal to max price.");		
 
+		WebElement leftSlider = driver.findElement(By.xpath(Utility.getProperties("leftSlider")));
 		double maxDisplayPrice = Double
 				.parseDouble(driver.findElement(By.xpath(Utility.getProperties("maxDisplayPrice"))).getText()
 						.replaceFirst("\\S", "").replaceAll("[$,]", "").trim());
+
+		// Move left slider.
+		while (true) {
+			double currentPositionPrice = Double
+					.parseDouble(driver.findElement(By.xpath(Utility.getProperties("maxDisplayPrice"))).getText()
+							.replaceFirst("\\S", "").replaceAll("[$,]", "").trim());
+
+			if (currentPositionPrice == toFilterPrice)
+				break;
+			else if (toFilterPrice < maxDisplayPrice)
+				leftSlider.sendKeys(Keys.ARROW_LEFT);
+			else
+				leftSlider.sendKeys(Keys.ARROW_RIGHT);
+
+	
+		}
+
+		WebElement rightSlider = driver.findElement(By.xpath(Utility.getProperties("rightSlider")));
+
 		double minDisplayPrice = Double
 				.parseDouble(driver.findElement(By.xpath(Utility.getProperties("minDisplayPrice"))).getText()
 						.replaceFirst("\\S", "").replaceAll("[$,]", "").trim());
 
-		WebElement leftSlider = driver.findElement(By.xpath(Utility.getProperties("leftSlider")));
-		WebElement rightSlider = driver.findElement(By.xpath(Utility.getProperties("rightSlider")));
+		// Move right slider.
+		while (true) {
+			double currentPositionPrice = Double
+					.parseDouble(driver.findElement(By.xpath(Utility.getProperties("minDisplayPrice"))).getText()
+							.replaceFirst("\\S", "").replaceAll("[$,]", "").trim());
 
-		Point position = leftSlider.getLocation();
-		// int xAxis = position.getX();
-		int yAxis = position.getY();
-		// System.out.println("x: " + xAxis);
-		System.out.println("y: " + yAxis);
-
-		Actions action = new Actions(driver);
-		//action.moveToElement(leftSlider).click().build().perform();
-		// action.dragAndDropBy(slider, p.getX(), p.getY()).perform();
-
-		int xOffSet = 0;
-		// move left slider.
-		if (toFilterPrice < maxDisplayPrice) {
-			while (true) {
-				action.dragAndDropBy(leftSlider, --xOffSet, 0).build().perform();
-				for(int i=0; i<1000; i++) {}
-				//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Utility.getProperties("leftSlider"))));
-				double d = Double.parseDouble(driver.findElement(By.xpath(Utility.getProperties("maxDisplayPrice")))
-						.getText().replaceFirst("\\S", "").replaceAll("[$,]", "").trim());
-				System.out.println("left slider value is: " + d);
-				System.out.println("x off set : " + xOffSet);
-
-				if(d <= toFilterPrice) {
-					break;
-				}
-			}
-
+			if (currentPositionPrice == fromFilterPrice)
+				break;
+			else if (fromFilterPrice > minDisplayPrice)
+				rightSlider.sendKeys(Keys.ARROW_RIGHT);
+			else
+				rightSlider.sendKeys(Keys.ARROW_RIGHT);
+		}
+		
+		driver.findElement(By.xpath(Utility.getProperties("filterBtn"))).click();
+		
+		//  Verify book(s) are within the price range.
+		List<WebElement> books = driver.findElements(By.xpath(Utility.getProperties("books")));
+		for(WebElement book: books) {
+			double bookPrice = Double
+					.parseDouble(book.getText().replaceFirst("\\S", "").replaceAll("[$,]", "").trim());
+			Assert.assertTrue(bookPrice >= fromFilterPrice && bookPrice <= toFilterPrice, "ERROR! Book's price is not within the price range.");
 		}
 
 		System.out.println("PASS!");
