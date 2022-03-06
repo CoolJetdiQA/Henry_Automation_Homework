@@ -5,7 +5,15 @@
     <classes>
       <class name="shop.Shop">
         <methods>
-          <include name="shopFilterPrice"/>
+          <include name="shopSortByPopularity"/>
+          <include name="shopSortByPriceLowToHigh"/>
+          <include name="shopSale"/>
+          <include name="shopReadMore"/>
+          <include name="shopSortByAverage"/>
+          <include name="shopSortByNewness"/>
+          <include name="afterTest"/>
+          <include name="shopProductCategory"/>
+          <include name="shopSortByPriceHighToLow"/>
           <include name="beforeTest"/>
         </methods>
       </class> <!-- shop.Shop -->

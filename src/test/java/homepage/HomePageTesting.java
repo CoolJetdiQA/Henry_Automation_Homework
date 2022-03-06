@@ -1,23 +1,7 @@
-/*  	
- 	Class: TechCircle Batch #9
- 	Date: February 26, 2022
- 	Student: Ming-Jen Leu (Henry Leu)
- 	Programming language: Java 11
- 	Filename: HomePageTesting.java
- 	
-  Home Page automation testing.
-  Test cases #1 to #18.
-  
- */
-
 package homepage;
 
+import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -25,23 +9,35 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import Utilities.Driver;
 import Utilities.Utility;
 
 public class HomePageTesting {
 	private WebDriver driver;
 	private WebDriverWait wait;
-
 	
-	@Before
+	@BeforeMethod
 	public void beforeTest() {
 		driver = Driver.getDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		wait = new WebDriverWait(driver, 10);
+		
+		Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
+		// This is deprecated in Selenium 4.
+		//Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(30));
+		
+		// This is deprecated in Selenium 4.
+		//wait = new WebDriverWait(Driver.getDriver(), 30);
 	}
 
-	@Test
+	@Test (priority = 1)
 	public void threeSlider() {
+		
 		System.out.print("Home Page - Three Sliders: Test case #1 starts.....");
 
 		// Click on Shop menu.
@@ -67,8 +63,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	@Test
+	@Test (priority = 2)
 	public void threeArrival() {
+		
 		System.out.print("Home Page - Three Arrivals: Test case #2 starts.....");
 
 		// Click on Shop menu.
@@ -94,8 +91,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	@Test
+	@Test (priority = 3)
 	public void arrivalImageNavigate() {
+		
 		System.out.print("Home Page - Arrival Image Navigate: Test case #3 starts.....");
 
 		// Click on Shop menu.
@@ -139,8 +137,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 	
-	@Test
+	@Test (priority = 4)
 	public void arrivalImageDescription() {
+		
 		System.out.print("Home Page - Arrival Image Description: Test case #4 starts.....");
 
 		// Click on Shop menu.
@@ -190,8 +189,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 	
-	@Test
+	@Test (priority = 5)
 	public void arrivalImageReview() {
+		
 		System.out.print("Home Page - Arrival Image Review: Test case #5 starts.....");
 
 		// Click on Shop menu.
@@ -241,8 +241,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	@Test
+	@Test (priority = 6)
 	public void addToBasket() {
+		
 		System.out.print("Home Page - Add to Basket: Test case #6 starts.....");
 
 		// Click on Shop menu.
@@ -290,8 +291,8 @@ public class HomePageTesting {
 		driver.findElement(By.xpath(Utility.getProperties("addBtn"))).click();
 
 		// Assert the book quantity on the Menu.
-		String qtyMenu = driver.findElement(By.xpath(Utility.getProperties("qtyMenu"))).getText().toUpperCase()
-				.split("\\D")[0];
+		String qtyMenu = driver.findElement(By.xpath(Utility.getProperties("qtyMenu"))).getText()
+				.toUpperCase().split("\\D")[0];
 		String orderQty = Utility.getProperties("orderQty");
 		Assert.assertTrue(qtyMenu.contains(orderQty));
 
@@ -309,8 +310,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 	
-	@Test
+	@Test (priority = 7)
 	public void addToBasketMoreBook() {
+		
 		System.out.print("Home Page - Add More Book: Test case #7 starts.....");
 
 		// Click on Shop menu.
@@ -358,8 +360,8 @@ public class HomePageTesting {
 		driver.findElement(By.xpath(Utility.getProperties("addBtn"))).click();
 
 		// Assert the book quantity on the Menu.
-		String qtyMenu = driver.findElement(By.xpath(Utility.getProperties("qtyMenu"))).getText().toUpperCase()
-				.split("\\D")[0];
+		String qtyMenu = driver.findElement(By.xpath(Utility.getProperties("qtyMenu")))
+				.getText().toUpperCase().split("\\D")[0];
 		String orderQty = Utility.getProperties("orderQty");
 		Assert.assertTrue(qtyMenu.contains(orderQty));
 
@@ -378,6 +380,7 @@ public class HomePageTesting {
 		String inStockQtyStr = driver.findElement(By.xpath(Utility.getProperties("inStockQty"))).getText();
 		int inStockQty = Integer.parseInt(inStockQtyStr.split("\\D")[0]);
 		int overStockQty = Integer.parseInt(Utility.getProperties("overStockQty"));
+		
 		// Assert.assertTrue(overStockQty < inStockQty) Alternative way to assert. This
 		// will fail the test.
 		if (overStockQty > inStockQty)
@@ -386,8 +389,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	@Test
+	@Test (priority = 8)
 	public void addToBasketItem() {
+		
 		System.out.print("Home Page -Add-To-Basket Items: Test case #8 starts.....");
 
 		// Click on Shop menu.
@@ -464,8 +468,9 @@ public class HomePageTesting {
 	}
 
 	
-	@Test
+	@Test (priority = 9)
 	public void addToBasketItemCoupon() {
+		
 		System.out.print("Home Page - Add to Basket Item Coupon: Test case #9 starts.....");
 
 		// Click on Shop menu.
@@ -561,8 +566,9 @@ public class HomePageTesting {
 	}
 
 	
-	@Test
+	@Test (priority = 10)
 	public void addToBasketItemCouponValue() {
+		
 		System.out.print("Home Page - Add to Basket Item Coupon Value: Test case #10 starts.....");
 
 		// Click on Shop menu.
@@ -669,8 +675,9 @@ public class HomePageTesting {
 	}
 
 	
-	@Test
+	@Test (priority = 11)
 	public void addToBasketItemRemoveBook() {
+		
 		System.out.print("Home Page - Add to Basket Item Remove Book: Test case #11 starts.....");
 
 		// Click on Shop menu.
@@ -753,8 +760,9 @@ public class HomePageTesting {
 	}
 
 	
-	@Test
+	@Test (priority = 12)
 	public void addToBasketItemAddBook() {
+		
 		System.out.print("Home Page - Add to Basket Item Add Book: Test case #12 starts.....");
 
 		// Click on Shop menu.
@@ -844,8 +852,9 @@ public class HomePageTesting {
 	}
 
 	
-	@Test
+	@Test (priority = 13)
 	public void checkoutBookFinalPrice() {
+		
 		System.out.print("Home Page - Checkout Book Final Price: Test case #13 starts.....");
 
 		// Click on Shop menu.
@@ -923,8 +932,9 @@ public class HomePageTesting {
 	}
 
 	
-	@Test
+	@Test (priority = 14)
 	public void checkoutUpateBasket() {
+		
 		System.out.print("Home Page - Checkout Update Basket: Test case #14 starts.....");
 
 		// Click on Shop menu.
@@ -1014,8 +1024,9 @@ public class HomePageTesting {
 	}
 
 	
-	@Test
+	@Test (priority = 15)
 	public void subTotalCondition() {
+		
 		System.out.print("Home Page - Sub Total & Total Condition: Test case #15 starts.....");
 
 		// Click on Shop menu.
@@ -1100,8 +1111,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	@Test
+	@Test (priority = 16)
 	public void checkoutFunctionality() {
+		
 		System.out.print("Home Page - Checkout Functionality: Test case #16 starts.....");
 
 		// Click on Shop menu.
@@ -1193,8 +1205,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	@Test
+	@Test (priority = 17)
 	public void checkoutPaymentGateway() {
+		
 		System.out.print("Home Page - Checkout Payment Gateway: Test case #17 starts.....");
 
 		// Click on Shop menu.
@@ -1342,8 +1355,9 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	@Test
+	@Test (priority = 18)
 	public void placeOrder() {
+		
 		System.out.print("Home Page - Place Order: Test case #18 starts.....");
 
 		// Click on Shop menu.
@@ -1501,7 +1515,7 @@ public class HomePageTesting {
 		System.out.println("PASSED!");
 	}
 
-	@After
+	@AfterMethod
 	public void afterTest() {
 		Driver.tearDown();
 	}

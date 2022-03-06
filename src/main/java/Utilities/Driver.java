@@ -3,34 +3,33 @@ package Utilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Driver {
 	public static WebDriver driver;
-
-	private Driver() {
-
-	}
 
 	public static WebDriver getDriver() {
 		if(driver == null) {
 			switch(Utility.getProperties("browser")) {
 			case "firefox": WebDriverManager.firefoxdriver().setup();
 							driver = new FirefoxDriver();
+							driver.get(Utility.getProperties("url"));
+							driver.manage().window().maximize();
+							driver.manage().deleteAllCookies();
+							//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 							break;
 			case "chrome":  WebDriverManager.chromedriver().setup();
+							//ChromeOptions c = new ChromeOptions();
+							//c.addArguments("--no-sandbox");
+							//c.addArguments("--disable-setuid-sandbox");
 							driver = new ChromeDriver();
-							break;
-			case "safari":  WebDriverManager.safaridriver().setup();
-			                driver = new SafariDriver();
-			                break;		
+							driver.get(Utility.getProperties("url"));
+							driver.manage().window().maximize();
+							driver.manage().deleteAllCookies();
+							//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+							break;	
 			}
 		}
-		driver.get(Utility.getProperties("url"));
-		driver.manage().deleteAllCookies();
-		driver.manage().window().maximize();
-		
 		return driver; 
 	}
 	
@@ -41,5 +40,4 @@ public class Driver {
 			driver = null;
 		}
 	}
-
 }
