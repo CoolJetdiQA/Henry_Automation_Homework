@@ -1,6 +1,8 @@
 package myaccountregistration;
 
 import java.time.Duration;
+import java.util.Locale;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,6 +11,10 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import com.github.javafaker.service.FakeValuesService;
+import com.github.javafaker.service.RandomService;
+
 import Utilities.Driver;
 import Utilities.Utility;
 
@@ -30,7 +36,7 @@ public class MyAccountRegistration {
 		// wait = new WebDriverWait(Driver.getDriver(), 30);
 	}
 
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1)
 	public void signIn() {
 
 		// Click on My Account menu.
@@ -39,8 +45,12 @@ public class MyAccountRegistration {
 		// wait for email text box
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Utility.getProperties("emailField"))));
 
+		// Java Faker to generate random email address.
+		FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-US"), new RandomService());
+		String email = fakeValuesService.bothify("????##@gmail.com");		
+		
 		// Enter valid new email address. Email never registered before.
-		driver.findElement(By.id(Utility.getProperties("emailField"))).sendKeys(Utility.getProperties("registeredEmail"));
+		driver.findElement(By.id(Utility.getProperties("emailField"))).sendKeys(email);
 
 		// Enter valid registered password.
 		String password = Utility.getProperties("registeredPassword");
@@ -148,7 +158,7 @@ public class MyAccountRegistration {
 		Assert.assertTrue(actualEmailErrorMsg.contains(expectedEmailErrorMsg), Utility.getProperties("invalidEmailErroMsg"));
 	}
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4)
 	public void emptyPassword() {
 
 		// Click on My Account menu.
@@ -157,8 +167,12 @@ public class MyAccountRegistration {
 		// wait for email text box
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Utility.getProperties("emailField"))));
 
+		// Java Faker to generate random email address.
+		FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-US"), new RandomService());
+		String email = fakeValuesService.bothify("????##@gmail.com");	
+		
 		// Enter valid email. Email never registered before.
-		driver.findElement(By.id(Utility.getProperties("emailField"))).sendKeys(Utility.getProperties("registeredEmail"));
+		driver.findElement(By.id(Utility.getProperties("emailField"))).sendKeys(email);
 
 		// Enter an empty password.
 		driver.findElement(By.id(Utility.getProperties("passwordField"))).sendKeys("");
